@@ -1,0 +1,47 @@
+﻿//判断设备连接
+adb devices
+
+//列出安装的应用程序
+adb shell pm list packages
+
+//卸载指定程序包
+adb uninstall package_name  //包名形如com.android.testme
+
+//安装程序
+adb install 路径+APK名
+adb install -r 可以替换apk
+adb install -d 允许向下安装
+//如果设备不联机就不让执行,也就是实例状态是 device 时
+adb wait-for-device
+
+//重启
+adb reboot
+
+adb logcat  -v time -b main > C:\Users\24\Desktop\log.txt 
+
+//拉出文件
+adb pull /data/anr/traces.txt C:\Users\24\Desktop\整机测试中断的问题日志
+
+//压进文件
+adb push  D:\file.txt system/
+
+//查看内存
+adb shell dumpsys meminfo $package_name or $pid
+
+//查看cpu
+adb shell top
+
+//monkey测试,对指定包进行monkey测试
+monkey  -p package_name --ignore-crashes --ignore-timeouts --ignore-security-exceptions --monitor-native-crashes --ignore-native-crashes -v -v -v --throttle 500 990000 > log.txt
+monkey  -p com.turing.doraemon --ignore-crashes --ignore-timeouts --ignore-security-exceptions --monitor-native-crashes --ignore-native-crashes -v -v -v --throttle 500 990000 > sdcard/log.txt
+
+
+adb uninstall com.turing.doraemon
+adb uninstall com.tuling.doraemonupdateinstallutil
+
+adb logcat  -v time -b main > C:\Users\24\Desktop\dora_0718\
+adb logcat  -v time -b main > C:\Users\24\Desktop\Log_ledi\zj1_m.txt
+adb logcat  -v time -b system >C:\Users\24\Desktop\Log_ledi\zj1_s.txt
+
+com.turing.app.pcbfactorytest
+com.tuling.doraemonupdateinstallutil
